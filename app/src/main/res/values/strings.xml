@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TEMPERATURA_SAG</string>
+    <!--NODOS FIREBASE-->
+    <string name="nodo_personal">Personal</string>
+    <string name="nodo_temperatura">Temperatura</string>
+    <string name="nodo_declaracion">Declaracion</string>
+    <!--Campos de la tabla Personal-->
+    <string name="campo_Apellidos">Apellidos</string>
+    <string name="campo_Area">Area</string>
+    <string name="campo_DNI">DNI</string>
+    <string name="campo_Nombres">Nombres</string>
+
+</resources>

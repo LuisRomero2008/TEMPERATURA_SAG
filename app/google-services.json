@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836869130270",
+    "firebase_url": "https://temperaturasag.firebaseio.com",
+    "project_id": "temperaturasag",
+    "storage_bucket": "temperaturasag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836869130270:android:135734740e9b8db7f8460f",
+        "android_client_info": {
+          "package_name": "com.example.temperatura_sag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836869130270-2j6pfc9aqtv1dcp615mqiajqrvkqnr1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.temperatura_sag",
+            "certificate_hash": "54137db50b91336e531ef7d44e6ec0d49a5264cd"
+          }
+        },
+        {
+          "client_id": "836869130270-812o0stljsau5ai75hfc7umvkbt40uft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYDtT66awYRLOWdOJ6nGEU0qm8-riRtJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836869130270-812o0stljsau5ai75hfc7umvkbt40uft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
