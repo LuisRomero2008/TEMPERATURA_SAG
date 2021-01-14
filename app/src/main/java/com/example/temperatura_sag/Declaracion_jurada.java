@@ -70,7 +70,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
     ImageButton img;
     DatabaseReference mDatabasePersonal,mDatabase,mDatabaseDeclaracion2,mDatabaseArea;
     String NOMBRE, APELLIDO, DIRECCION, TELEFONO,IDAREA,NAMEAREA,DNI,doc,Medicamentos,enfermedad,fecha;
-    CheckBox CK1,CK2,CK3,CK4,CK5,CK6;
+    CheckBox CK1,CK2,CK3,CK4,CK5,CK6,CK7;
     Button btnguardar;
     ArrayList<String> respuestas =new ArrayList<>();
     Bitmap b=null,firma=null;
@@ -103,6 +103,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
         CK4=findViewById(R.id.ck4);
         CK5=findViewById(R.id.ck5);
         CK6=findViewById(R.id.ck6);
+        CK7=findViewById(R.id.ck7);
         txtdni=findViewById(R.id.etDNI);
         txtmedi=findViewById(R.id.etmedi);
         txtenfer=findViewById(R.id.etenfermedad);
@@ -188,7 +189,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        try{
+
                             if (DNI.length()==8){
                                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                                     NOMBRE=ds.child("Nombres").getValue().toString();
@@ -206,9 +207,6 @@ public class Declaracion_jurada extends AppCompatActivity  {
                                 TELEFONO="";
                                 IDAREA="";
                             }
-                        }catch (Exception vEx){
-                            Toast.makeText(Declaracion_jurada.this, ""+vEx.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -222,10 +220,10 @@ public class Declaracion_jurada extends AppCompatActivity  {
         txtmedi.setVisibility(View.GONE);
         txtenfer.setVisibility(View.GONE);
 
-        CK5.setOnClickListener(new View.OnClickListener() {
+        CK6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((CK5).isChecked()==true){
+                if((CK6).isChecked()==true){
                     txtmedi.setVisibility(View.VISIBLE);
                 }else {
                     txtmedi.setVisibility(View.GONE);
@@ -233,10 +231,10 @@ public class Declaracion_jurada extends AppCompatActivity  {
                 }
             }
         });
-        CK6.setOnClickListener(new View.OnClickListener() {
+        CK7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((CK6).isChecked()==true){
+                if((CK7).isChecked()==true){
                     txtenfer.setVisibility(View.VISIBLE);
                 }else {
                     txtenfer.setVisibility(View.GONE);
@@ -247,7 +245,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
     }
 
     public void Area(final String id){
-        try {
+
             Query q =mDatabaseArea.orderByKey().equalTo(id);
             q.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -260,9 +258,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-        }catch (Exception vEx){
-            Toast.makeText(Declaracion_jurada.this, "oncreate "+vEx .getMessage(), Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 
@@ -379,9 +375,15 @@ public class Declaracion_jurada extends AppCompatActivity  {
         }else{
             respuestas.add("0");
         }
-        if(respuestas.size()==5){
+        if((CK6).isChecked()==true){
+            respuestas.add("1");
+        }else{
+            respuestas.add("0");
+        }
+        if(respuestas.size()==6){
             Date myDate = new Date();
             final String fecha = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
+            DatabaseReference gradosref = mDatabase.child("Declaracion");
             DNI=txtdni.getText().toString();
             Medicamentos=txtmedi.getText().toString();
             enfermedad=txtenfer.getText().toString();
@@ -392,10 +394,12 @@ public class Declaracion_jurada extends AppCompatActivity  {
             datosDeclaracion.put("rpt3", respuestas.get(2));
             datosDeclaracion.put("rpt4", respuestas.get(3));
             datosDeclaracion.put("rpt5", respuestas.get(4));
+            datosDeclaracion.put("rpt6", respuestas.get(5));
             datosDeclaracion.put("Medicamentos", Medicamentos);
             datosDeclaracion.put("Enfermedad", enfermedad);
             datosDeclaracion.put("Fecha", fecha);
-            mDatabase.child("Declaracion").push().setValue(datosDeclaracion);
+
+            gradosref.child(DNI+"-"+fecha).setValue(datosDeclaracion);
         }
         delcaracionfirmada();
     }
@@ -494,10 +498,11 @@ public class Declaracion_jurada extends AppCompatActivity  {
             canvas.drawText("N° Celular :   "+TELEFONO,350,180,myPaint);
             canvas.drawText("En los últimos 14 días calendario ha tenido alguno de los síntomas siguientes:",10,230,myPaint);
             canvas.drawText("1. Sensación de alza térmica o fiebre",10,280,myPaint);
-            canvas.drawText("2.Tos,estornudos o dificultad para respirar.",10,295,myPaint);
+            canvas.drawText("2. Tos,estornudos o dificultad para respirar.",10,295,myPaint);
             canvas.drawText("3. Expectoración o flema amarila o verdosa.",10,310,myPaint);
-            canvas.drawText("4.Contacto con personas(s) con un caso confirmado de COVID-19",10,325,myPaint);
-            canvas.drawText("5. Esta tomando alguna medicación (detallar cuál o cuales)",10,340,myPaint);
+            canvas.drawText("4. Pérdida del gusto y/o del olfato.",10,325,myPaint);
+            canvas.drawText("5. Contacto con personas(s) con un caso confirmado de COVID-19",10,340,myPaint);
+            canvas.drawText("6. Está tomando alguna medicación (detallar cuál o cuales)? ",10,355,myPaint);
             canvas.drawText("SI",395,265,myPaint);
             canvas.drawText("NO",495,265,myPaint);
             canvas.drawText(""+Medicamentos,10,370,myPaint);
@@ -563,18 +568,31 @@ public class Declaracion_jurada extends AppCompatActivity  {
         });
         try {
             Address formail = new InternetAddress("programador@sagperu.com");
+
             Message m= new MimeMessage(s);
+            System.out.println("sE");
             m.setFrom(new InternetAddress(sEmail));
+
             m.setRecipient(Message.RecipientType.TO, formail);
+
             String email="";
             for(int i=0; i<mails.size();i++){
-                email=email+","+mails.get(i);
+                if(i==0){
+                    email=mails.get(i);
+                }else{
+                    email=email+","+mails.get(i);
+                }
             }
+
             InternetAddress[] cc = InternetAddress.parse(email);
+
             m.setRecipients(Message.RecipientType.CC, cc);
             BodyPart pdfMail = new MimeBodyPart();
+
             pdfMail.setDataHandler(new DataHandler(new FileDataSource(file)));
+
             pdfMail.setFileName(filName);
+
             MimeMultipart mp = new MimeMultipart();
             mp.addBodyPart(pdfMail);
             m.setSubject("FICHA DE SINTOMATOLOGIA DE "+NOMBRE+" "+APELLIDO);
@@ -582,6 +600,7 @@ public class Declaracion_jurada extends AppCompatActivity  {
             m.setContent(mp);
             new SendMail().execute(m);
         }catch (Exception vEx){
+            System.out.println("catch send mail "+vEx.getMessage());
             Toast.makeText(Declaracion_jurada.this, "catch send mail "+vEx.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -600,11 +619,12 @@ public class Declaracion_jurada extends AppCompatActivity  {
                 return "Listo";
             } catch (MessagingException e) {
                 e.printStackTrace();
-                return "doInBackground "+e.getMessage();
+                return "doInBackground "+e.toString();
             }
         }
         @Override
         protected void onPostExecute(String s) {
+            System.out.println("error "+s);
             super.onPostExecute(s);
             try{
                 progressDialog.dismiss();
@@ -622,7 +642,8 @@ public class Declaracion_jurada extends AppCompatActivity  {
                     });
                     build.show();
                 }else{
-                    Toast.makeText(Declaracion_jurada.this, "onPostExecute"+s, Toast.LENGTH_SHORT).show();
+                    System.out.println("Error inseperado "+s);
+                    Toast.makeText(Declaracion_jurada.this, "Error inesperado"+s, Toast.LENGTH_SHORT).show();
                 }
             }catch(Exception vEx){
                 Toast.makeText(Declaracion_jurada.this, "Catch send "+vEx.getMessage(), Toast.LENGTH_SHORT).show();
@@ -631,8 +652,12 @@ public class Declaracion_jurada extends AppCompatActivity  {
     }
 
     public void Pass(){
+        String dni=txtdni.getText().toString();
         Intent i = new Intent(this, Registro_Temperatura.class);
         i.putExtra("Tipo","ingreso");
+        i.putExtra("DNI",dni);
+        i.putExtra("Nombre",NOMBRE);
+        i.putExtra("Apellido",APELLIDO);
         startActivity(new Intent(i));
     }
 }

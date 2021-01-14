@@ -17,13 +17,14 @@
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity android:name=".Registro_Personal"/>
         <activity android:name=".Reportes" />
-        <activity android:name=".Reporte_Fechas" />
         <activity android:name=".Registro_Temperatura"/>
         <activity android:name=".Firma_Personal" />
         <activity android:name=".Personal_Datos" />
+        <activity android:name=".Reporte_Fechas"/>
         <activity android:name=".prueba"/>
         <activity android:name=".Declaracion_jurada"/>
-        <activity android:name=".Menu_principal">
+        <activity android:name=".Menu_principal" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

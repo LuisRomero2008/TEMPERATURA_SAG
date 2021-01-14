@@ -8,26 +8,36 @@
     android:background="#BBDEFB">
 
     <CheckBox
-        android:id="@+id/ck6"
+        android:id="@+id/ck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:text="Enfermedad de Importancia"
+        android:text="Contacto con infectados por COVID-19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ck5" />
+        app:layout_constraintTop_toBottomOf="@+id/ck3" />
 
     <EditText
         android:id="@+id/etenfermedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="88dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/style_redondo_editext"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/ck6"
-        app:layout_constraintTop_toBottomOf="@+id/ck5" />
+        app:layout_constraintStart_toEndOf="@+id/ck7"
+        app:layout_constraintTop_toBottomOf="@+id/ck6" />
+
+    <CheckBox
+        android:id="@+id/ck7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Enfermedad de Importancia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ck6" />
 
     <CheckBox
         android:id="@+id/ck1"
@@ -50,24 +60,24 @@
         app:layout_constraintTop_toBottomOf="@+id/ck2" />
 
     <CheckBox
-        android:id="@+id/ck4"
+        android:id="@+id/ck5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:text="Contacto con infectados por COVID-19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ck3" />
+        app:layout_constraintTop_toBottomOf="@+id/ck" />
 
     <CheckBox
-        android:id="@+id/ck5"
+        android:id="@+id/ck6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:text="Consumo de algun medicamento"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ck4" />
+        app:layout_constraintTop_toBottomOf="@+id/ck5" />
 
     <EditText
         android:id="@+id/etDNI"
@@ -93,8 +103,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
-        app:layout_constraintStart_toEndOf="@+id/ck5"
-        app:layout_constraintTop_toBottomOf="@+id/ck4" />
+        app:layout_constraintStart_toEndOf="@+id/ck6"
+        app:layout_constraintTop_toBottomOf="@+id/ck5" />
 
     <ImageButton
         android:id="@+id/imageButton"

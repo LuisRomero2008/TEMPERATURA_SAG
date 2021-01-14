@@ -78,7 +78,13 @@ public class Registro_Temperatura extends AppCompatActivity {
         txtapellido=findViewById(R.id.lblapellido);
         btnregistro=findViewById(R.id.btnregistrar);
         valor=findViewById(R.id.idtipo);
+        String DNI = getIntent().getStringExtra("DNI");
+        String Nombre = getIntent().getStringExtra("Nombre");
+        String Apellido = getIntent().getStringExtra("Apellido");
+        etdni.setText(DNI);
 
+        txtnombre.setText(Nombre);
+        txtapellido.setText(Apellido);
         sendmail= FirebaseDatabase.getInstance().getReference("SEmail");
         pendmail= FirebaseDatabase.getInstance().getReference("PEmail");
         dendmail= FirebaseDatabase.getInstance().getReference("DEmail");
@@ -207,7 +213,8 @@ public class Registro_Temperatura extends AppCompatActivity {
     public void Registro(View view){
         String value= valor.getText().toString();
         if(value.equals("ingreso")){
-
+            etdni.setClickable(false);
+            etdni.setFocusable(false);
             TemperaturaI();
         }
         if(value.equals("salida")){

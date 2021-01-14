@@ -66,7 +66,6 @@ public class Firma_Personal extends AppCompatActivity {
 
 
         String file = Environment.getExternalStorageDirectory() + DNI+".jpg";
-        System.out.println("ruta de aca "+file);
         File fileScreen= new File(file);
 
         FileOutputStream fileOutputStream = null;
