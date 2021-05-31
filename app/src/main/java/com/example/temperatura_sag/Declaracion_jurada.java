@@ -15,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -43,6 +44,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,7 +68,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class Declaracion_jurada extends AppCompatActivity  {
+public class Declaracion_jurada extends AppCompatActivity {
     EditText txtdni,txtmedi,txtenfer;
     ImageButton img;
     DatabaseReference mDatabasePersonal,mDatabase,mDatabaseDeclaracion2,mDatabaseArea;
@@ -660,4 +663,20 @@ public class Declaracion_jurada extends AppCompatActivity  {
         i.putExtra("Apellido",APELLIDO);
         startActivity(new Intent(i));
     }
+
+    public Connection sqlconERP(){
+        Connection conexion=null;
+        try {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+            conexion = DriverManager.getConnection(""
+                    + "jdbc:jtds:sqlserver://161.132.181.82:1433/SAG_ERP;"
+                    + "user=sa;password=lims,.123;");
+        }catch (Exception vEx){
+            System.out.println("Error en la conexion "+vEx);
+        }
+        return conexion;
+    }
+
 }

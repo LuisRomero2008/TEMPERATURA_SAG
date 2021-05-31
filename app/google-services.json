@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "836869130270",
-    "firebase_url": "https://temperaturasag.firebaseio.com",
-    "project_id": "temperaturasag",
-    "storage_bucket": "temperaturasag.appspot.com"
+    "project_number": "499897008980",
+    "firebase_url": "https://apktemperatura.firebaseio.com",
+    "project_id": "apktemperatura",
+    "storage_bucket": "apktemperatura.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:836869130270:android:135734740e9b8db7f8460f",
+        "mobilesdk_app_id": "1:499897008980:android:bc207d9bc9ce4da3f47ec1",
         "android_client_info": {
           "package_name": "com.example.temperatura_sag"
         }
       },
       "oauth_client": [
         {
-          "client_id": "836869130270-2j6pfc9aqtv1dcp615mqiajqrvkqnr1b.apps.googleusercontent.com",
+          "client_id": "499897008980-orfl9qtk72tlrlumcogebq5lr9l5bug1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.temperatura_sag",
-            "certificate_hash": "54137db50b91336e531ef7d44e6ec0d49a5264cd"
+            "certificate_hash": "e369d97160385056e6ce1119acf726a36aab90dc"
           }
         },
         {
-          "client_id": "836869130270-812o0stljsau5ai75hfc7umvkbt40uft.apps.googleusercontent.com",
+          "client_id": "499897008980-pjjhpk00qug7ubr01obp1nji84819ac7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYDtT66awYRLOWdOJ6nGEU0qm8-riRtJI"
+          "current_key": "AIzaSyAcVd6klxpzuWWetqCID0HkIWBsdK2n0z0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "836869130270-812o0stljsau5ai75hfc7umvkbt40uft.apps.googleusercontent.com",
+              "client_id": "499897008980-pjjhpk00qug7ubr01obp1nji84819ac7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
